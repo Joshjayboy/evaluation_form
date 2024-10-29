@@ -13,32 +13,39 @@ const Post = ({ id, task, des, img, setUpdateUI, updateMode }) => {
   const removeTask = () => {
     axios.delete(`${baseURL}/delete/${id}`).then((res) => {
       console.log(res);
-      setUpdateUI((prevState) => !prevState);
+      // setUpdateUI((prevState) => !prevState);
     });
   };
 
   return (
-    <>
-      <Card>
-        <CardMedia sx={{ height: 140 }} image={img} title="green iguana" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {task}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {des}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={() => updateMode(id, task)} size="small">
-            Edit
-          </Button>
-          <Button size="small" variant="outlined" onClick={removeTask}>
-            Delete
-          </Button>
-        </CardActions>
-      </Card>
-    </>
+    // each post
+    <Card>
+      <CardMedia sx={{ height: 140 }} image={img} title="green iguana" />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {task}
+        </Typography>
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          {des}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button onClick={console.log("edit")} size="small">
+          Edit
+        </Button>
+        <Button
+          size="small"
+          variant="outlined"
+          onClick={removeTask}
+          sx={{
+            backgroundColor: "red",
+            color: "white",
+          }}
+        >
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
   );
 };
 
